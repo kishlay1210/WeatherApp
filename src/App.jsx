@@ -12,7 +12,7 @@ const App = () => {
             required
           />
         </form>
-        <button className="location button">
+        <button className="location-button">
           <span className="material-symbols-rounded">my_location</span>
         </button>
       </div>
