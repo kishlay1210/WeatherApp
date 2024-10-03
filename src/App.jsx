@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CurrentWeather from "./components/CurrentWeather";
 import HourlyWeatherItem from "./components/HourlyWeatherItem";
 import SearchSection from "./components/SearchSection";
@@ -7,6 +7,7 @@ import { weatherCodes } from "./constants";
 const App = () => {
   const [currentWeather, setCurrentWeather] = useState({});
   const [hourlyForecasts, setHourlyForecasts] = useState([]);
+  const searchInputRef = useRef(null);
 
   const filterHourlyForecast = (hourlyData) => {
   setHourlyForecasts(hourlyData);
@@ -27,6 +28,8 @@ const App = () => {
       
       // Combine hourly data from forecast days
       const combinedHourlyData = [...data.forecast.forecastday[0].hour];
+
+      searchInputRef.current.value = data.location.name
       filterHourlyForecast(combinedHourlyData);
       // console.log(combinedHourlyData);
       
@@ -37,7 +40,7 @@ const App = () => {
   return (
     <div className="container">
       {/*Search Section*/}
-      <SearchSection getWeatherDetails={getWeatherDetails}/>
+      <SearchSection getWeatherDetails={getWeatherDetails} searchInputRef={searchInputRef}/>
 
       {/*Weather Section*/}
       <div className="weather-section">
