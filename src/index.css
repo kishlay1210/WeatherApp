@@ -136,19 +136,19 @@ body {
   font-size: 3.38rem;
 }
 
-.current-weather .temperature span{
+.current-weather .temperature span {
   margin: 5px 0 0 2px;
   font-size: 1.56rem;
-  font-weight:400;
+  font-weight: 400;
 }
 
 .current-weather .description {
   font-size: 1.25rem;
 }
 
-.hourly-forecast{
-padding: 16px 25px;
-border-top: 1px solid rgba(255, 255, 255, 0.25);
+.hourly-forecast {
+  padding: 16px 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .hourly-forecast .weather-list {
@@ -162,7 +162,7 @@ border-top: 1px solid rgba(255, 255, 255, 0.25);
   scrollbar-color: transparent transparent;
 }
 
-.hourly-forecast:hover .weather-list  {
+.hourly-forecast:hover .weather-list {
   scrollbar-color: #c5bcdb transparent;
 }
 
@@ -183,7 +183,7 @@ border-top: 1px solid rgba(255, 255, 255, 0.25);
   display: flex;
   color: #fff;
   min-height: 398px;
-  padding:60px 40px 40px;
+  padding: 60px 40px 40px;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -195,6 +195,7 @@ border-top: 1px solid rgba(255, 255, 255, 0.25);
 
 /* Responsive media query for smaller screen */
 @media (max-width: 624px) {
+
   body,
   .search-section {
     padding: 20px;
