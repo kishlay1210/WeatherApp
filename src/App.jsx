@@ -13,7 +13,17 @@ const App = () => {
   const searchInputRef = useRef(null);
 
   const filterHourlyForecast = (hourlyData) => {
-    setHourlyForecasts(hourlyData);
+    const currentHour = new Date().setMinutes(0, 0, 0);
+    const next24Hours = currentHour + 24 * 60 * 60 * 1000;
+    
+    
+    //Filter the hourly data to only include the next 24 hours data
+    const next24HoursData = hourlyData.filter(({ time }) => {
+      const forecastTime = new Date(time).getTime();
+      return forecastTime >= currentHour && forecastTime <= next24Hours;
+    });
+
+    setHourlyForecasts(next24HoursData);
   };
 
   // Fetches weather details based on API
@@ -24,7 +34,7 @@ const App = () => {
       const response = await fetch(API_URL);
       if (!response.ok) throw new Error();
       const data = await response.json();
-
+  
       //Extract Current weather data
       const temperature = Math.floor(data.current.temp_c);
       const description = data.current.condition.text;
@@ -35,11 +45,10 @@ const App = () => {
       setCurrentWeather({ temperature, description, weatherIcon });
 
       // Combine hourly data from forecast days
-      const combinedHourlyData = [...data.forecast.forecastday[0].hour];
+      const combinedHourlyData = [...data.forecast.forecastday[0].hour, ...data.forecast.forecastday[1].hour];
 
       searchInputRef.current.value = data.location.name;
       filterHourlyForecast(combinedHourlyData);
-      // console.log(combinedHourlyData);
     } catch {
       //Set setHasNpResults state if there is an error
       setHasNoResults(true);
@@ -49,8 +58,9 @@ const App = () => {
   // Fetches default city as Swansea
   useEffect(() => {
     const defaultCity = "Swansea"
-    const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${defaultCity}& days=2 `;
+    const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${defaultCity}&days=2`;
     getWeatherDetails(API_URL);
+    
   }, []);
 
   return (
@@ -81,7 +91,7 @@ const App = () => {
             </ul>
           </div>
         </div>
-      )}
+       )} 
     </div>
   );
 };
