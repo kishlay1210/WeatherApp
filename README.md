@@ -2,7 +2,12 @@
 
 Welcome to **Weather App**, a responsive web application built using **React**, designed to provide users with real-time weather updates and a 24-hour forecast. The app is user-friendly and offers location-based weather data to ensure relevant and accurate information. 
 
-![image](https://github.com/user-attachments/assets/b5c6f455-98c8-4100-85ec-f4655bfdfd47)
+
+## Default city and location city
+![Demo](./public/image2.gif).
+
+## For No city
+![Demo](./public/image1.gif).
 
 
 ## Features
