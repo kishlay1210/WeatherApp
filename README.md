@@ -1,4 +1,4 @@
-# Weather App - A Responsive Weather Forecast Website
+# Weather App
 
 Welcome to **Weather App**, a responsive web application built using **React**, designed to provide users with real-time weather updates and a 24-hour forecast. The app is user-friendly and offers location-based weather data to ensure relevant and accurate information. 
 
